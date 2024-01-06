@@ -2,7 +2,19 @@
 #include "EngineMin.h"
 #include <Windows.h>
 
-class Application
-{
-};
 
+namespace Engine {
+	class YT_API Application
+	{
+	public:
+		Application() = default;
+		bool Initialize();
+		void Update();
+		inline bool IsRunning() { return mIsRunning; };
+
+	private:
+		bool mIsRunning = false;
+		HWND mWindowHandle = nullptr;
+
+	};
+}
