@@ -10,9 +10,26 @@ namespace Engine {
 
 		switch (msg) {
 		case WM_NCCREATE: {
-			std::cout << "Create a Window" << std::endl;
+			LPCREATESTRUCT param = reinterpret_cast<LPCREATESTRUCT>(lparam);
+			Application* pointer = reinterpret_cast<Application*>(param->lpCreateParams);
+			
+			SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pointer));
+			std::cout << "Sent Create a Window" << std::endl;
 			break;
 		}
+		case WM_CREATE: {
+			Application* pointer = reinterpret_cast<Application*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+			pointer->OnCreate(hwnd);
+			break;
+		}
+
+		case WM_DESTROY: {
+			Application* pointer = reinterpret_cast<Application*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+			pointer->OnDestroy();
+			PostQuitMessage(0);
+			break;
+		}
+
 		}
 
 		return DefWindowProc(hwnd, msg, wparam, lparam);
@@ -34,7 +51,7 @@ namespace Engine {
 
 		RegisterClass(&wndClass);
 
-		mWindowHandle =  CreateWindow(L"BaseWindowClass",L"ENGINE WINDOW", WS_OVERLAPPEDWINDOW, 200,200,1280,700,0,0,0,0);
+		mWindowHandle =  CreateWindow(L"BaseWindowClass",L"ENGINE WINDOW", WS_OVERLAPPEDWINDOW, 200,200,1280,700,0,0,0,this);
 		if (!mWindowHandle) {
 			return false;
 		}
@@ -46,8 +63,27 @@ namespace Engine {
 		return mIsRunning;
 
 	}
+
+
+	void Application::OnCreate(HWND hwnd) {
+
+		std::cout << "Created the actual window!!";
+	}
+
+
+
 	void Application::Update()
 	{
+		MSG message;
+		while (PeekMessage(&message, 0, 0, 0, PM_REMOVE)) {
+			TranslateMessage(&message);
+			DispatchMessage(&message);
+		}
+	}
 
+	void Application::OnDestroy()
+	{
+		std::cout << "Closed the Windows - Shutting Down application" << std::endl;
+		mIsRunning = false;
 	}
 }
