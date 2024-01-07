@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Application.h"
-#include <windowsx.h>
-#include <iostream>
+
 
 
 namespace Engine {
@@ -68,6 +67,7 @@ namespace Engine {
 	void Application::OnCreate(HWND hwnd) {
 
 		std::cout << "Created the actual window!!";
+		mRendered.Initialize(hwnd);
 	}
 
 

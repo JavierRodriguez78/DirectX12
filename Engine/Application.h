@@ -1,6 +1,7 @@
 #pragma once
 #include "EngineMin.h"
 #include <Windows.h>
+#include "RenderApi.h"
 
 
 namespace Engine {
@@ -14,7 +15,11 @@ namespace Engine {
 		void OnDestroy();
 		inline bool IsRunning() { return mIsRunning; };
 
-	private:
+	private: //Subsystem:
+
+		RenderApi mRendered;
+
+	private: //Variables:
 		bool mIsRunning = false;
 		HWND mWindowHandle = nullptr;
 
