@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RenderApi.h"
-#include "DXGIFactory.h"
-#include "DXGIAdapter.h"
+#include "DirectX12/DXGI/DXGIFactory.h"
+#include "DirectX12/DXGI/DXGIAdapter.h"
 
 
 namespace Engine {

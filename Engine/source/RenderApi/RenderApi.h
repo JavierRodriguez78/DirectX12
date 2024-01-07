@@ -1,7 +1,8 @@
 #pragma once
-#include "EngineMin.h";
+#include "..\EngineMin.h";
 #include <Windows.h>;
-#include "D12Device.h";
+
+#include "DirectX12\Base\D12Device.h";
 
 
 namespace Engine {

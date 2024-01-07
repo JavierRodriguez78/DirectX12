@@ -78,6 +78,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>${ProjectDir}\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -95,6 +96,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -112,6 +114,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>${ProjectDir}\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -129,6 +132,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -139,33 +143,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="D12Device.h" />
-    <ClInclude Include="DXGIAdapter.h" />
-    <ClInclude Include="DXGIFactory.h" />
-    <ClInclude Include="EngineMin.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="Helper.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="RenderApi.h" />
+    <ClInclude Include="source\Application.h" />
+    <ClInclude Include="source\RenderApi\DirectX12\Base\D12Device.h" />
+    <ClInclude Include="source\RenderApi\DirectX12\DXGI\DXGIAdapter.h" />
+    <ClInclude Include="source\RenderApi\DirectX12\DXGI\DXGIFactory.h" />
+    <ClInclude Include="source\EngineMin.h" />
+    <ClInclude Include="source\Helper.h" />
+    <ClInclude Include="source\pch.h" />
+    <ClInclude Include="source\RenderApi\RenderApi.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="TempClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="D12Device.cpp" />
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="DXGIAdapter.cpp" />
-    <ClCompile Include="DXGIFactory.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="source\Application.cpp" />
+    <ClCompile Include="source\RenderApi\DirectX12\Base\D12Device.cpp" />
+    <ClCompile Include="source\RenderApi\DirectX12\DXGI\DXGIAdapter.cpp" />
+    <ClCompile Include="source\RenderApi\DirectX12\DXGI\DXGIFactory.cpp" />
+    <ClCompile Include="source\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">${ProjectDir}\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">${ProjectDir}\source</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="RenderApi.cpp" />
-    <ClCompile Include="TempClass.cpp" />
-  </ItemGroup>
+    <ClCompile Include="source\RenderApi\RenderApi.cpp" />
+   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc" />
   </ItemGroup>
